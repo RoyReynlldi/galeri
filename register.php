@@ -70,10 +70,6 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav me-auto">
            
-        </div>
-        <a href="register.php" class="btn btn-outline-primary m-1">Daftar</a>
-        <a href="login.php" class="btn btn-outline-success m-1">Masuk</a>
-        </div>
     </div>
     </nav>
 

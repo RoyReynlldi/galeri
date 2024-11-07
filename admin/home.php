@@ -133,13 +133,11 @@
             if(isset($_GET['albumid'])) {
                 $albumid = $_GET['albumid'];
                 $query = mysqli_query($koneksi, "SELECT * FROM foto WHERE id_user='$userid' AND id_album='$albumid'");
-                while($data = mysqli_fetch_array($query)) { ?>
+                 while($data = mysqli_fetch_array($query)) { ?>
                     <div class="col-md-3 mt-2">
                         <div class="card mb-2">
                             <img src="../assets/img/<?php echo $data['lokasi_file']?>" class="card-img-top" title="<?php echo $data['judul_foto']?>" style="height:12rem;">
-                            <div class="card-footer text-center">
-                            <?php echo $data['nama_album'] ?>
-                            </div>
+                            
                         </div>
                     </div>
             <?php } } else { 

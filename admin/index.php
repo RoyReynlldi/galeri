@@ -47,7 +47,7 @@ $is_admin = $_SESSION['is_admin'];
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: transform 0.9s ease;
             background-color: rgba(255, 255, 255, 0.9);
         }
         .card:hover {
@@ -63,44 +63,44 @@ $is_admin = $_SESSION['is_admin'];
             transform: scale(1.05);
         }
         .card-footer {
-            background-color: #4a90e2;
+            background-color: black;
             color: white;
             text-align: center;
         }
         .modal-content {
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
+           border-radius: 10px;
+           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }   
 
-.modal-header {
-    border-bottom: none;
-    background-color: rgba(255, 255, 255, 0.8);
-}
+        .modal-header {
+            border-bottom: none;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
 
-.modal-title {
-    font-weight: bold;
-    color: #333;
-}
+        .modal-title {
+            font-weight: bold;
+            color: #333;
+        }
 
-.modal-body {
-    background-color: rgba(255, 255, 255, 0.9);
-}
+        .modal-body {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
 
-.card {
-    border: none;
-}
+        .card {
+            border: none;
+        }
 
-.btn-outline-primary {
-    background-color: #4a90e2;
-    color: white;
-}
+        .btn-outline-primary {
+            background-color: #4a90e2;
+            color: white;
+        }
 
-.btn-outline-primary:hover {
-    background-color: #007bff;
-    color: white;
-}
-
+        .btn-outline-primary:hover {
+            background-color: #007bff;
+            color: white;
+        }
     </style>
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
@@ -147,7 +147,7 @@ $is_admin = $_SESSION['is_admin'];
             <div class="card-footer text-center">
                 <?php echo htmlspecialchars($data['judul_foto']); ?>
                 
-                <!-- Like Feature -->
+                <!-- Like -->
                 <?php 
                     $fotoid = $data['id_foto'];
                     $ceksuka = mysqli_query($koneksi, "SELECT * FROM like_foto WHERE id_foto='$fotoid' AND id_user='$userid'");
@@ -173,8 +173,8 @@ $is_admin = $_SESSION['is_admin'];
 </div>
 
 
-        <!-- Modal Komentar -->
-        <div class="modal fade" id="komentar<?php echo $fotoid ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal Komentar -->
+<div class="modal fade" id="komentar<?php echo $fotoid ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -188,14 +188,11 @@ $is_admin = $_SESSION['is_admin'];
                     </div>
                     <div class="col-md-4">
                         <div class="m-2">
-                            <p><?php echo htmlspecialchars($data['deskripsi_foto']); ?></p>
+                            <p><strong>DESKRIPSI:</strong>  <?php echo htmlspecialchars ($data['deskripsi_foto']); ?></p>
                             <hr>
                             <h5>Komentar:</h5>
                             <?php 
-                                $komentar = mysqli_query($koneksi, "SELECT komentar_foto.*, user.nama_lengkap 
-                                                                    FROM komentar_foto 
-                                                                    JOIN user ON komentar_foto.id_user = user.id_user 
-                                                                    WHERE id_foto = '$fotoid'");
+                                $komentar = mysqli_query($koneksi, "SELECT komentar_foto.*, user.nama_lengkap FROM komentar_foto JOIN user ON komentar_foto.id_user = user.id_user WHERE id_foto = '$fotoid'");
                                 while ($row = mysqli_fetch_array($komentar)) {
                             ?>
                                 <p>
